@@ -98,11 +98,9 @@ bumpVer(){
 
 gitremotecommit(){
    git add .
-   # git remote add origin https://github.com/MoonLan/btfx.git
-   # git remote add github https://github.com/MoonLan/btfx.git
    git commit -m "auto add modification v$VERSION"
    git push origin master
-   git push github master -ff
+   #git push github master -ff
 }
 
 
