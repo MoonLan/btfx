@@ -63,32 +63,6 @@ increment_version() {
    return 0
 }
 
-listfiles(){
-   filesList=(*.sh)
-   EXCLUDE=("!(update.sh)")
-   shopt -s nullglob
-   for file in "${filesList[@]}|${EXCLUDE[@]}"; do
-      cdn $file
-   done
-}
-
-cdn(){
-   local filename=$1
-   if [ -z "$filename" ]; then
-      return 
-   fi;
-   local q="'"
-   local qq='"'
-   local backtick='`'
-   local url="https://cdn.jsdelivr.net/gh/$GH_USER/$GH_REPO@$GH_VERSION/$filename"
-   local install_file="wget ${url} & chmod 0700 ${filename} & ./${filename}"
-   local install_exe="wget -q -O - ${url} | bash"
-
-   #echo "${backtick}${install_file}${backtick}\n"
-   #echo "Or, "
-   echo "if you want to install ${filename}\n"
-   echo "${backtick}${install_exe}${backtick}\n\n"
-}
 
 bumpVer(){
    VERSION=$(cat version)
